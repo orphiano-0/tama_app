@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:tama_app/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:tama_app/features/authentication/screens/signup/signup.dart';
-import 'package:tama_app/navigation_menu.dart';
-
+import '../../../../../navigation_menu.dart';
+import '../../../../../screens/home/home.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 
