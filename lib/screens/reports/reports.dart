@@ -3,8 +3,30 @@ import 'package:tama_app/screens/reports/add_report.dart';
 
 import '../../utils/constants/colors.dart';
 
-class Report extends StatelessWidget {
-  const Report({super.key});
+class Report extends StatefulWidget {
+  const Report({Key? key}) : super(key: key);
+
+  @override
+  _ReportState createState() => _ReportState();
+}
+
+class _ReportState extends State<Report> {
+
+  String dropDownValue = 'or Select from this list';
+
+  var reportList = [
+    'or Select from this list',
+    'Traffic Incidents',
+    'Road Safety Violations',
+    'Traffic Violations',
+    'Infrastructure Issues',
+    'Public Transportation Issues',
+    'Weather-related Incidents',
+    'Special Events',
+    'Traffic Enforcement',
+    'Traffic Flow',
+    'Pedestrian Safety',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +101,9 @@ class Report extends StatelessWidget {
                          decoration: const BoxDecoration(
                            color: Color.fromRGBO(252, 172, 28, 0.1899999976158142),
                          ),
+                         child: const Text(
+                           ' Click proceed to Create your Report',
+                         ),
                        ),
                      ),
                      Positioned(
@@ -95,9 +120,9 @@ class Report extends StatelessWidget {
 
                      const Positioned(
                        top: 79,
-                       left: 21,
+                       left: 12,
                        child: Text(
-                         'What is your report?',
+                         ' Click proceed to Create your Report',
                          textAlign: TextAlign.left,
                          style: TextStyle(
                            color: Color.fromRGBO(252, 172, 28, 1),
@@ -144,52 +169,20 @@ class Report extends StatelessWidget {
                child: SizedBox(
                  width: 303,
                  height: 517,
-                 child: Stack(
-                   children: <Widget>[
-                     Positioned(
-                       top: 21,
-                       left: 0,
-                       child: Container(
-                         width: 303,
-                         height: 1,
-                         decoration: const BoxDecoration(
-                           color: Color.fromRGBO(208, 208, 208, 1),
-                         ),
-                       ),
-                     ),
-                     const Positioned(
-                       top: 0,
-                       left: 0,
-                       child: Text(
-                         'Or select',
-                         textAlign: TextAlign.left,
-                         style: TextStyle(
-                           color: Color.fromRGBO(115, 115, 115, 1),
-                           fontFamily: 'Poppins',
-                           fontSize: 13,
-                           letterSpacing: 0,
-                           fontWeight: FontWeight.normal,
-                           height: 1.5,
-                         ),
-                       ),
-                     ),
-                     const Positioned(
-                       top: 24,
-                       left: 1,
-                       child: Text(
-                         'Traffic Incidents\nRoad Safety Violations\nTraffic Violations\nInfrastructure Issues\nPublic Transportation Issues\nWeather-related Incidents\nSpecial Events\nTraffic Enforcement\nTraffic Flow\nPedestrian Safety',
-                         textAlign: TextAlign.left,
-                         style: TextStyle(
-                           color: Color.fromRGBO(115, 115, 115, 1),
-                           fontFamily: 'Poppins',
-                           fontSize: 15,
-                           letterSpacing: 0,
-                           fontWeight: FontWeight.normal,
-                           height: 1.5,
-                         ),
-                       ),
-                     ),
-                   ],
+                 child: DropdownButton(
+                     value: this.dropDownValue,
+                     icon: const Icon(Icons.keyboard_arrow_down),
+                     items: reportList.map((String reportList) {
+                       return DropdownMenuItem(
+                         value: reportList,
+                         child: Text(reportList),
+                       );
+                     }).toList(),
+                     onChanged: (String? newValue) {
+                       setState(() {
+                         dropDownValue = newValue!;
+                       });
+                     },
                  ),
                ),
              ),
