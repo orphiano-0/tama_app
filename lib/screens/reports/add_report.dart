@@ -94,65 +94,6 @@ class _ReportFormState extends State<ReportForm> {
                 ),
               ),
               Positioned(
-                top: 825,
-                left: 34,
-                child: SizedBox(
-                  width: 314,
-                  height: 130,
-                  child: Stack(
-                    children: <Widget>[
-                      const Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Text(
-                          'What happen?',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 21,
-                        left: 0,
-                        child: Container(
-                          width: 305,
-                          height: 109,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 36,
-                        left: 9,
-                        child: Text(
-                          'Please write what happened...',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 0.41999998688697815),
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
                 top: 552.9999389648438,
                 left: 34,
                 child: SizedBox(
@@ -520,65 +461,6 @@ class _ReportFormState extends State<ReportForm> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 221,
-                left: 33,
-                child: SizedBox(
-                  width: 306,
-                  height: 69,
-                  child: Stack(
-                    children: <Widget>[
-                      const Positioned(
-                        top: 18,
-                        left: 1,
-                        child: Text(
-                          'Date*',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 10,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 0,
-                        left: 0,
-                        child: Text(
-                          'When did it happen?',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 36,
-                        left: 1,
-                        child: Container(
-                          width: 305,
-                          height: 33,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               const Positioned(
                 top: 72,
                 left: 32,
@@ -639,6 +521,129 @@ class _ReportFormState extends State<ReportForm> {
                   ),
                 ),
               ),
+              Positioned(
+                top: 221,
+                left: 33,
+                child: SizedBox(
+                  width: 306,
+                  height: 69,
+                  child: Stack(
+                    children: <Widget>[
+                      const Positioned(
+                        top: 18,
+                        left: 1,
+                        child: Text(
+                          'Date* (mm-dd-yyyy)',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(115, 115, 115, 1),
+                            fontFamily: 'Poppins',
+                            fontSize: 10,
+                            letterSpacing: 0,
+                            fontWeight: FontWeight.normal,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                      const Positioned(
+                        top: 0,
+                        left: 0,
+                        child: Text(
+                          'When did it happen?',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(115, 115, 115, 1),
+                            fontFamily: 'Poppins',
+                            fontSize: 14,
+                            letterSpacing: 0,
+                            fontWeight: FontWeight.normal,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 36,
+                        left: 1,
+                        child: Container(
+                          width: 305,
+                          height: 33,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromRGBO(0, 0, 0, 1),
+                              width: 1,
+                            ),
+                          ),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: "Enter Date Here",
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 825,
+                left: 34,
+                child: SizedBox(
+                  width: 314,
+                  height: 130,
+                  child: Stack(
+                    children: <Widget>[
+                      const Positioned(
+                        top: 0,
+                        left: 0,
+                        child: Text(
+                          'What happened?',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(115, 115, 115, 1),
+                            fontFamily: 'Poppins',
+                            fontSize: 14,
+                            letterSpacing: 0,
+                            fontWeight: FontWeight.normal,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 21,
+                        left: 0,
+                        child: Container(
+                          width: 305,
+                          height: 109,
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            border: Border.all(
+                              color: const Color.fromRGBO(0, 0, 0, 1),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Positioned(
+                        top: 36,
+                        left: 9,
+                        child: Text(
+                          'Please write what happened...',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(115, 115, 115, 0.41999998688697815),
+                            fontFamily: 'Poppins',
+                            fontSize: 12,
+                            letterSpacing: 0,
+                            fontWeight: FontWeight.normal,
+                            height: 1.5,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         )
@@ -648,3 +653,4 @@ class _ReportFormState extends State<ReportForm> {
     );
   }
 }
+
