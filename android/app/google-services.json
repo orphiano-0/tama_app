@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348354996914",
+    "project_id": "tama-app-27240",
+    "storage_bucket": "tama-app-27240.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348354996914:android:b8606e4f1d78038b41b7ab",
+        "android_client_info": {
+          "package_name": "com.example.tama_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWGtK2EBQwSGMdrfEfdo8TxtWJL6IqrG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

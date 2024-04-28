@@ -42,6 +42,7 @@ dependencies:
   syncfusion_flutter_charts: ^25.1.38
   hive_flutter: ^1.1.0
   curved_labeled_navigation_bar: ^2.0.2
+  firebase_database: ^10.5.4
 
 
 #--------------- ./ PACKAGES END ------------------#
