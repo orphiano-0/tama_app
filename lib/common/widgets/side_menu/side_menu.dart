@@ -7,7 +7,6 @@ import 'package:tama_app/navigation_menu.dart';
 import 'package:tama_app/utils/constants/colors.dart';
 
 import '../../../features/personilization/screens/profile/profile.dart';
-import '../../../screens/home/home.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
