@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tama_app/common/widgets/side_menu/text_icon_button.dart';
 import 'package:tama_app/features/authentication/screens/login/login.dart';
 import 'package:tama_app/features/personilization/screens/settings/settings.dart';
+import 'package:tama_app/navigation_menu.dart';
 import 'package:tama_app/utils/constants/colors.dart';
 
 import '../../../features/personilization/screens/profile/profile.dart';
@@ -36,7 +37,7 @@ class MyDrawer extends StatelessWidget {
                 TextIconButton(
                   onPressed: () => Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (_) => const Home(),
+                      builder: (_) => const NavigationMenu(),
                     ),
                   ),
                   icon: Icons.home,
