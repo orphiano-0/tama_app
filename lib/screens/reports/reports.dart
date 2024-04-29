@@ -3,11 +3,18 @@ import 'package:tama_app/screens/reports/add_report.dart';
 
 import '../../utils/constants/colors.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import '../../firebase_options.dart';
+
+// ...
+
 class Report extends StatefulWidget {
   const Report({Key? key}) : super(key: key);
 
   @override
   _ReportState createState() => _ReportState();
+
+
 }
 
 class _ReportState extends State<Report> {

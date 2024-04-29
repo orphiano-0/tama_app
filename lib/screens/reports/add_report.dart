@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:tama_app/screens/reports/preview_screen.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:tama_app/screens/reports/preview_screen.dart';
+import 'package:tama_app/features/authentication/controllers/report/report_controller.dart';
 import '../../utils/constants/colors.dart';
 
 class ReportForm extends StatefulWidget {
@@ -9,7 +14,12 @@ class ReportForm extends StatefulWidget {
 }
 
 class _ReportFormState extends State<ReportForm> {
+  final controller = Get.put(ReportController());
+  late String date, hrs, mins, locDesc, incidentDesc, time;
 
+  void _sendToFirebase() {
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,14 +54,14 @@ class _ReportFormState extends State<ReportForm> {
 
           Container(
           width: 375,
-          height: 1041,
+          height: 770,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(255, 255, 255, 1),
           ),
           child: Stack(
             children: <Widget>[
               Positioned(
-                top: 973,
+                top: 700,
                 left: 31,
                 child: SizedBox(
                   width: 306,
@@ -70,13 +80,17 @@ class _ReportFormState extends State<ReportForm> {
                             ),
                             onPressed: () {
                               // Add your button press logic here
+                              // Initialize Firebase
+                              // Connect to Firebase
+                              // Get Data from inputs
+                              // Send data from inputs to database
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => const PreviewScreen()),
                               );
                             },
                             child: const Text(
-                              'Preview',
+                              'Submit Report',
                               style: TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 1),
                                 fontFamily: 'Poppins',
@@ -89,136 +103,6 @@ class _ReportFormState extends State<ReportForm> {
                           ),
                         ),
                       )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 552.9999389648438,
-                left: 34,
-                child: SizedBox(
-                  width: 308,
-                  height: 262.00006103515625,
-                  child: Stack(
-                    children: <Widget>[
-                      Positioned(
-                        top: 29,
-                        left: 0,
-                        child: Container(
-                          width: 305,
-                          height: 125.59327697753906,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/Rectangle16.png'),
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 2.0000810623168945,
-                        left: 0,
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: Color.fromRGBO(115, 115, 115, 1),
-                              size: 18,
-                            ),
-                            SizedBox(width: 8), // Add some spacing between the icon and the text
-                            Text(
-                              'Use current location',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Color.fromRGBO(115, 115, 115, 1),
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                letterSpacing: 0,
-                                fontWeight: FontWeight.normal,
-                                height: 1.5,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Positioned(
-                        top: 181.0000762939453,
-                        left: 0,
-                        child: Text(
-                          'Is this location above correct?',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 206.0000762939453,
-                        left: 0,
-                        child: Container(
-                          width: 150,
-                          height: 56,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 0.5,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 206.0000762939453,
-                        left: 154,
-                        child: Container(
-                          width: 151,
-                          height: 56,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 0.5,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 227.0000762939453,
-                        left: 0,
-                        child: Text(
-                          'Yes',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 227.0000762939453,
-                        left: 155,
-                        child: Text(
-                          'No edit',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -253,28 +137,22 @@ class _ReportFormState extends State<ReportForm> {
                         child: Container(
                           width: 305,
                           height: 63,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Please describe the location",
+                              contentPadding: EdgeInsets.fromLTRB(10, 1, 10, 1),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 31,
-                        left: 241,
-                        child: Text(
-                          'Upload',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 14,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
+                            maxLines: 4,
+                            style: TextStyle(
+                              color: Color.fromRGBO(115, 115, 115, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 10,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
@@ -360,14 +238,14 @@ class _ReportFormState extends State<ReportForm> {
                 left: 34,
                 child: SizedBox(
                   width: 212,
-                  height: 51,
+                  height: 60,
                   child: Stack(
                     children: <Widget>[
                       const Positioned(
                         top: 0,
                         left: 0,
                         child: Text(
-                          'Time*',
+                          'Time *',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Color.fromRGBO(115, 115, 115, 1),
@@ -400,12 +278,24 @@ class _ReportFormState extends State<ReportForm> {
                         left: 0,
                         child: Container(
                           width: 71,
-                          height: 33,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
+                          height: 40,
+                          child: TextField(
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                                hintText: '00',
+                              border: InputBorder.none,
+                            ),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            style: const TextStyle(
+                              color: Color.fromRGBO(115, 115, 115, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5,
                             ),
                           ),
                         ),
@@ -415,45 +305,26 @@ class _ReportFormState extends State<ReportForm> {
                         left: 83,
                         child: Container(
                           width:71,
-                          height: 33,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
+                          height: 40,
+                          child: TextField(
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(
+                              hintText: '00',
+                              border: InputBorder.none,
                             ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 29,
-                        left: 8,
-                        child: Text(
-                          '00',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 29,
-                        left: 94,
-                        child: Text(
-                          '00',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                              // FilteringTextInputFormatter.allow(RegExp(r'^d{0,2}')),
+                            ],
+                            style: const TextStyle(
+                              color: Color.fromRGBO(115, 115, 115, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 12,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.normal,
+                              height: 1.5,
+                            ),
                           ),
                         ),
                       ),
@@ -526,7 +397,7 @@ class _ReportFormState extends State<ReportForm> {
                 left: 33,
                 child: SizedBox(
                   width: 306,
-                  height: 69,
+                  height: 80,
                   child: Stack(
                     children: <Widget>[
                       const Positioned(
@@ -566,18 +437,24 @@ class _ReportFormState extends State<ReportForm> {
                         left: 1,
                         child: Container(
                           width: 305,
-                          height: 33,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
-                            ),
-                          ),
-                          child: const TextField(
+                          height: 40,
+                          child: TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               hintText: "Enter Date Here",
+                              hintStyle: TextStyle(
+                                color: Color.fromRGBO(115, 115, 115, 0.7),
+                              ),
                             ),
+                              style: const TextStyle(
+                                color: Color.fromRGBO(115, 115, 115, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 12,
+                                letterSpacing: 0,
+                                fontWeight: FontWeight.normal,
+                                height: 1.5,
+                              ),
+                            onChanged: (value) => date = value,
                           ),
                         ),
                       ),
@@ -586,7 +463,7 @@ class _ReportFormState extends State<ReportForm> {
                 ),
               ),
               Positioned(
-                top: 825,
+                top: 550,
                 left: 34,
                 child: SizedBox(
                   width: 314,
@@ -615,28 +492,26 @@ class _ReportFormState extends State<ReportForm> {
                         child: Container(
                           width: 305,
                           height: 109,
-                          decoration: BoxDecoration(
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            border: Border.all(
-                              color: const Color.fromRGBO(0, 0, 0, 1),
-                              width: 1,
+                          child: const TextField(
+                            decoration: InputDecoration(
+                              hintText: "Please describe the incident",
+                              hintStyle: TextStyle(
+                                color: Color.fromRGBO(115, 115, 115, 0.7),
+                              ),
+
+                              contentPadding: EdgeInsets.fromLTRB(10, 1, 10, 1),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        top: 36,
-                        left: 9,
-                        child: Text(
-                          'Please write what happened...',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 0.41999998688697815),
-                            fontFamily: 'Poppins',
-                            fontSize: 12,
-                            letterSpacing: 0,
-                            fontWeight: FontWeight.normal,
-                            height: 1.5,
+                            maxLines: 8,
+                            style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 10,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ),
                       ),
