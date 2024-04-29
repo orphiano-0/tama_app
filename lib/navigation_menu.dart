@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:tama_app/features/personilization/screens/settings/settings.dart';
 import 'package:tama_app/screens/home/home.dart';
+import 'package:tama_app/screens/reports/add_report.dart';
 import 'package:tama_app/screens/reports/reports.dart';
 import 'package:tama_app/utils/constants/colors.dart';
 import 'package:tama_app/utils/helpers/helper_functions.dart';
@@ -43,7 +45,7 @@ class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
 
   final screens = [ const Home(),
-    Report(),
-    Container(color: Colors.orange),
+    ReportForm(),
+    SettingsScreen(),
   ];
 }
