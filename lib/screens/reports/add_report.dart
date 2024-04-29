@@ -6,8 +6,11 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:tama_app/screens/reports/preview_screen.dart';
-import 'package:tama_app/features/authentication/controllers/report/report_controller.dart';
+// import 'package:tama_app/features/authentication/controllers/report/report_controller.dart';
 import '../../utils/constants/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:tama_app/firebase_options.dart';
 
 class ReportForm extends StatefulWidget {
   @override
@@ -15,14 +18,13 @@ class ReportForm extends StatefulWidget {
 }
 
 class _ReportFormState extends State<ReportForm> {
-  final controller = Get.put(ReportController());
-  late String date, hrs, mins, locDesc, incidentDesc, time;
+  // final controller = Get.put(ReportController());
+  var date = '', hrs = '', mins = '', locDesc = '',
+      incidentDesc = '', time = '';
 
-  void _sendToFirebase() {
-
-  }
   @override
   Widget build(BuildContext context) {
+    CollectionReference reports = FirebaseFirestore.instance.collection('reports');
     return Scaffold(
       extendBodyBehindAppBar: false,
       appBar: AppBar(
@@ -54,7 +56,7 @@ class _ReportFormState extends State<ReportForm> {
           children: <Widget>[
           Container(
           width: 375,
-          height: 770,
+          height: 700,
           decoration: const BoxDecoration(
             color: Color.fromRGBO(255, 255, 255, 1),
           ),
@@ -182,7 +184,9 @@ class _ReportFormState extends State<ReportForm> {
                                 fontWeight: FontWeight.normal,
                                 height: 1.5,
                               ),
-                            onChanged: (value) => date = value,
+                            onChanged: (value) {
+                              date = value;
+                            },
                           ),
                         ),
                       ),
@@ -339,8 +343,8 @@ class _ReportFormState extends State<ReportForm> {
                           height: 63,
                           child: TextField(
                             decoration: const InputDecoration(
-                              hintText: "Please describe the location",
-                              contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 1),
+                              hintText: "Please describe the location of the incident",
+                              contentPadding: EdgeInsets.fromLTRB(15, 15, 15, 5),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
@@ -373,12 +377,12 @@ class _ReportFormState extends State<ReportForm> {
                     children: <Widget>[
                       const Positioned(
                         top: 0,
-                        left: 0,
+                        left: 13,
                         child: Text(
                           'What happened?',
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            color: Color.fromRGBO(115, 115, 115, 1),
+                            color: Color.fromRGBO(0, 0, 0, 1),
                             fontFamily: 'Poppins',
                             fontSize: 14,
                             letterSpacing: 0,
@@ -399,8 +403,7 @@ class _ReportFormState extends State<ReportForm> {
                               hintStyle: TextStyle(
                                 color: Color.fromRGBO(115, 115, 115, 0.7),
                               ),
-
-                              contentPadding: EdgeInsets.fromLTRB(10, 1, 10, 1),
+                              contentPadding: EdgeInsets.fromLTRB(15, 15, 15, 5),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
@@ -422,7 +425,7 @@ class _ReportFormState extends State<ReportForm> {
                 ),
               ),
               Positioned(
-                top: 700,
+                top: 600,
                 left: 31,
                 child: SizedBox(
                   width: 306,
@@ -441,10 +444,16 @@ class _ReportFormState extends State<ReportForm> {
                             ),
                             onPressed: () {
                               // Add your button press logic here
-                              // Initialize Firebase
-                              // Connect to Firebase
-                              // Get Data from inputs
-                              // Send data from inputs to database
+                              reports
+                                  .add({
+                                    'date':date,
+                                    'time':'$hrs : $mins',
+                                    'locationDescription': locDesc,
+                                    'incidentDescription':incidentDesc,
+                                  })
+                                  .then((value) => print('Report Submitted'))
+                                  .catchError(
+                                      (error) => print('Failed to add user: $error'));
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) => const PreviewScreen()),
