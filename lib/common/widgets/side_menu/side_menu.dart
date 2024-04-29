@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tama_app/common/widgets/side_menu/text_icon_button.dart';
 import 'package:tama_app/features/authentication/screens/login/login.dart';
 import 'package:tama_app/features/personilization/screens/settings/settings.dart';
+import 'package:tama_app/features/personilization/screens/wallet/wallet.dart';
 import 'package:tama_app/navigation_menu.dart';
 import 'package:tama_app/utils/constants/colors.dart';
 
@@ -43,7 +44,12 @@ class MyDrawer extends StatelessWidget {
                   icon: Icons.home,
                   label: 'Home Screen',
                 ),
-                const TextIconButton(
+                TextIconButton(
+                  onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (_) => const WalletHomeScreen(),
+                    ),
+                  ),
                   icon: Icons.wallet,
                   label: 'Wallet',
                 ),

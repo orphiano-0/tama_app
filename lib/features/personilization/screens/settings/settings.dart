@@ -99,7 +99,7 @@ class SettingsScreen extends StatelessWidget {
                           // Add functionality here
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => WalletScreen()),
+                            MaterialPageRoute(builder: (context) => WalletHomeScreen()),
                           );
                         },
                       ),
