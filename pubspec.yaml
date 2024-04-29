@@ -43,6 +43,7 @@ dependencies:
   hive_flutter: ^1.1.0
   curved_labeled_navigation_bar: ^2.0.2
   firebase_database: ^10.5.4
+  cloud_firestore: ^4.5.0
 
 
 #--------------- ./ PACKAGES END ------------------#
