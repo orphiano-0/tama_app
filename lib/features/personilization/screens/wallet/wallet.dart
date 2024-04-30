@@ -2,16 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:tama_app/common/widgets/side_menu/side_menu.dart';
 import 'package:tama_app/features/personilization/screens/wallet/details/detail_wallet.dart';
 import 'package:tama_app/features/personilization/screens/wallet/details/total_wallet_bal.dart';
+import 'package:provider/provider.dart';
+import 'providers/wallet_provider.dart';
+
 class WalletHomeScreen extends StatefulWidget {
-  const WalletHomeScreen({super.key});
+  const WalletHomeScreen({Key? key}) : super(key: key);
 
   @override
   _WalletHomeScreenState createState() => _WalletHomeScreenState();
 }
 
 class _WalletHomeScreenState extends State<WalletHomeScreen> {
+
+    late WalletProvider walletProvider;
+    late String mnemonic;
+
+  @override
+  void initState() {
+    super.initState();
+    walletProvider = Provider.of<WalletProvider>(context, listen: false);
+
+    // Call the necessary methods here
+    loadWalletData();
+  }
+
+  // Method to load wallet data
+  Future<void> loadWalletData() async {
+    // Generate mnemonic
+    final mnemonic = walletProvider.generateMnemonic();
+    print('Mnemonic Pass Phrase: $mnemonic');
+    
+    // Get private key
+    final privateKey = await walletProvider.getPrivateKey(mnemonic);
+    print('Private Key: $privateKey');
+
+    // Get public key
+    final publicKey = await walletProvider.getPublicKey(privateKey);
+    print('Public Key: $publicKey');
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    // final walletProvider = Provider.of<WalletProvider>(context);
+
+    // final mnemonic = walletProvider.generateMnemonic();
+    // final privateKey = await walletProvider.getPrivateKey(mnemonic);
+    // final publicKey = await walletProvider.getPublicKey(privateKey);
+
     return Scaffold(
       body: Column(
         children: [
